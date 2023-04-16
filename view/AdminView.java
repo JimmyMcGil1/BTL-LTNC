@@ -16,7 +16,7 @@ public class AdminView extends JFrame {
 	private StockManager stck;
 	private JPanel titlePanel;
 	private JPanel commandPanel;
-	private JLabel error_msg;
+	private JTextField error_msg;
 	private JTextField inflateTF;
 	private JTextField nameTF;
 	private JTextField percentageTF;
@@ -32,15 +32,16 @@ public class AdminView extends JFrame {
 		this.setTitle("Admin window");
 		this.setSize(500,300);
 		this.setLocationRelativeTo(null);
-		
+		//initialize title panel
 		this.titlePanelSet();
+		//initialize command panel
 		this.commandPanelSet();
 					
-		this.error_msg = new JLabel("");
 		this.setLayout(new BorderLayout());
 		this.add(titlePanel, BorderLayout.NORTH);
 		this.add(commandPanel, BorderLayout.CENTER);
-		this.add(error_msg, BorderLayout.SOUTH);
+		//initialize error log
+		this.add(this.errorLogSet(), BorderLayout.SOUTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	private void titlePanelSet() {
@@ -80,14 +81,18 @@ public class AdminView extends JFrame {
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateTitle)
 							.addComponent(changeByTitle))
+							//add new command name here
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateTF)
 							.addGroup(gl.createSequentialGroup()
 								.addComponent(nameTF)
-								.addComponent(percentageTF)))
+								.addComponent(percentageTF))
+							//add new command arguments here
+							)
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateChange)
 							.addComponent(changeByChange))
+							//add new command button here
 		);
 		gl.setVerticalGroup(
 				gl.createSequentialGroup()
@@ -100,7 +105,22 @@ public class AdminView extends JFrame {
 							.addComponent(nameTF)
 							.addComponent(percentageTF)
 							.addComponent(changeByChange))
+					//add new command config here
 		);
+	}
+	private JPanel errorLogSet() {
+		JPanel errorPanel = new JPanel();
+		this.error_msg = new JTextField();
+		this.error_msg.setEditable(false);
+		errorPanel.setLayout(new BorderLayout());
+		//add empty panel
+		errorPanel.add(new JPanel(), BorderLayout.NORTH);
+		errorPanel.add(new JPanel(), BorderLayout.WEST);
+		errorPanel.add(new JPanel(), BorderLayout.EAST);
+		errorPanel.add(new JPanel(), BorderLayout.SOUTH);
+		//add error log
+		errorPanel.add(this.error_msg, BorderLayout.CENTER);
+		return errorPanel;
 	}
 	public void inflate() {
 		this.error_msg.setText("");
@@ -118,7 +138,8 @@ public class AdminView extends JFrame {
 		this.stck.inflate(percentage);
 	}
 	public void changeBy() {
-		this.error_msg.setText("");
+		this.error_msg.setText(null);
+		this.error_msg.setBackground(null);
 		String id = this.nameTF.getText();
 		String tmp = this.percentageTF.getText();
 		this.nameTF.setText(null);
@@ -130,6 +151,9 @@ public class AdminView extends JFrame {
 		}
 		catch(Exception e) {
 			this.error_msg.setText("Invalid input!");
+			this.error_msg.setHorizontalAlignment(0);
+			this.error_msg.setFont(new Font("Arial", Font.BOLD, 13));
+			this.error_msg.setBackground(Color.red);
 			return;
 		}
 	}
