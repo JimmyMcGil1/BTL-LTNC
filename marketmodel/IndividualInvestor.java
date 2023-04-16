@@ -21,8 +21,8 @@ public class IndividualInvestor implements IInvestor {
 	public String getName() {
 		return this.name;
 	}
-	public String[] getMsg() {
-		return this.msgLog;
+	public String getMsg(int i) {
+		return this.msgLog[i];
 	}
 	public void printMsg() {
 		System.out.println(this.msgLog);
