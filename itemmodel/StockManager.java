@@ -49,7 +49,6 @@ public class StockManager implements ItemManager {
 	public static int indexOf(String s) {
 		//check empty
 		String tmp = s;
-		System.out.println(tmp);
 		if(tmp.isBlank()) return -1;
 		if(tmp.length() <= 3) {
 			tmp = tmp.toLowerCase();

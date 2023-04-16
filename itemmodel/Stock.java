@@ -8,7 +8,7 @@ public class Stock extends Item {
 		 * name  : String
 		 * id 	 : String
 		 * price : float
-		 * market: StockMarket
+		 * market: AMarket
 		 */
 	
 	//Methods:
@@ -16,7 +16,7 @@ public class Stock extends Item {
 		this.name = null;
 		this.id = null;
 		this.price = 0;
-		this.market = new AMarket();
+		this.market = null;
 	}
 	@Override
 	public void setID(String id) throws Exception  {

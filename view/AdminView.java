@@ -41,7 +41,7 @@ public class AdminView extends JFrame {
 		this.add(titlePanel, BorderLayout.NORTH);
 		this.add(commandPanel, BorderLayout.CENTER);
 		this.add(error_msg, BorderLayout.SOUTH);
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	private void titlePanelSet() {
 		this.titlePanel = new JPanel();

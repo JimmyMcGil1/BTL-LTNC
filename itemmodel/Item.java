@@ -20,7 +20,17 @@ public abstract class Item {
 	public abstract void setID(String id) throws Exception;
 	public abstract void setInitialPrice(float initPrice);
 	public void setPrice(float price) {
-		this.price = (price <= 0) ? 0 : price;
+		float tmp_price = (price <= 0) ? 0 : price;
+		float change = tmp_price - this.price;
+		if(change < 0) {
+			this.price = tmp_price;
+			market.notifyInvestor(name + "(" + id +"): has decreased by " + Math.abs(change));
+		}
+		else if(change > 0) {
+			this.price = tmp_price;
+			market.notifyInvestor(name + "(" + id + "): has increased by " + change);
+		}
+		
 	}
 	public String getName() {
 		return this.name;
@@ -30,8 +40,5 @@ public abstract class Item {
 	}
 	public float getPrice() {
 		return this.price;
-	}
-	public void notifyMarket(String msg) {
-		this.market.notifyInvestor();
 	}
 }
