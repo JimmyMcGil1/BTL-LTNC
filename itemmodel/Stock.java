@@ -47,6 +47,7 @@ public class Stock extends Item {
 	}
 	public void assignMarket(StockMarket market) {
 		this.market = market;
+		market.add(this);
 	}
 		
 }

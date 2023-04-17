@@ -25,10 +25,12 @@ public abstract class Item {
 		if(change < 0) {
 			this.price = tmp_price;
 			market.notifyInvestor(name + "(" + id +"): has decreased by " + Math.abs(change));
+			market.updateView(id, false);
 		}
 		else if(change > 0) {
 			this.price = tmp_price;
 			market.notifyInvestor(name + "(" + id + "): has increased by " + change);
+			market.updateView(id, true);
 		}
 		
 	}
