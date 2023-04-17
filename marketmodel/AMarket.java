@@ -13,6 +13,7 @@ public abstract class AMarket {
 	}
 	public void subscribe(IInvestor investor) {
 		//check exist then add
+		System.out.println("subcribe");
 		if(this.investorList.indexOf(investor) != -1) return;
 		this.investorList.add(investor);
 	}
