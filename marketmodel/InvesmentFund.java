@@ -1,10 +1,10 @@
 package marketmodel;
-import view.UserView;
+import view.*;
 public class InvesmentFund implements IInvestor {
     private String name;
     private String[] msgLog;
 	private int numOfMsg;
-	private UserView uv;	
+	private InvestmentFundView uv;	
     public InvesmentFund(String _name) {
         name = _name;
         this.msgLog = new String[10];
@@ -14,7 +14,7 @@ public class InvesmentFund implements IInvestor {
     public String getName() {
         return name;
     }
-    public void setUserView(UserView uv) {
+    public void setUserView(InvestmentFundView uv) {
 		this.uv = uv;
 	}
     public String getMsg(int i) {

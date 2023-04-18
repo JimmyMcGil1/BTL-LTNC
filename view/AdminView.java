@@ -19,6 +19,7 @@ public class AdminView extends JFrame {
 	private JTextField error_msg;
 	private JTextField inflateTF;
 	private JTextField nameTF;
+	private JTextField ggTF;
 	private JTextField percentageTF;
 	private static boolean show = false;
 	//Methods:
@@ -71,6 +72,15 @@ public class AdminView extends JFrame {
 		commandPanel.add(nameTF);
 		commandPanel.add(percentageTF);
 		commandPanel.add(changeByChange);
+		//GovermentGrant
+		JLabel ggTitle = new JLabel("Goverment grant:");
+		this.ggTF = new JTextField();
+		JButton ggChange = new JButton("Change");
+		ggAction ga = new ggAction(this);
+		ggChange.addActionListener(ga);
+		commandPanel.add(ggTitle);
+		commandPanel.add(ggTF);
+		commandPanel.add(ggChange);
 		//
 		GroupLayout gl = new GroupLayout(commandPanel);
 		commandPanel.setLayout(gl);
@@ -80,17 +90,20 @@ public class AdminView extends JFrame {
 				gl.createSequentialGroup()
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateTitle)
+							.addComponent(ggTitle)
 							.addComponent(changeByTitle))
 							//add new command name here
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateTF)
+							.addComponent(ggTF)
 							.addGroup(gl.createSequentialGroup()
-								.addComponent(nameTF)
-								.addComponent(percentageTF))
+									.addComponent(nameTF)
+									.addComponent(percentageTF))
 							//add new command arguments here
 							)
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(inflateChange)
+							.addComponent(ggChange)
 							.addComponent(changeByChange))
 							//add new command button here
 		);
@@ -100,6 +113,10 @@ public class AdminView extends JFrame {
 							.addComponent(inflateTitle)
 							.addComponent(inflateTF)
 							.addComponent(inflateChange))
+					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.BASELINE)
+							.addComponent(ggTitle)
+							.addComponent(ggTF)
+							.addComponent(ggChange))
 					.addGroup(gl.createParallelGroup(GroupLayout.Alignment.BASELINE)
 							.addComponent(changeByTitle)
 							.addComponent(nameTF)
@@ -133,6 +150,9 @@ public class AdminView extends JFrame {
 		}
 		catch(Exception e) {
 			this.error_msg.setText("Invalid input!");
+			this.error_msg.setHorizontalAlignment(0);
+			this.error_msg.setFont(new Font("Arial", Font.BOLD, 13));
+			this.error_msg.setBackground(Color.red);
 			return;
 		}
 		this.stck.inflate(percentage);
@@ -157,9 +177,28 @@ public class AdminView extends JFrame {
 			return;
 		}
 	}
+	public void GovermentGrant() {
+		this.error_msg.setText("");
+		String tmp = this.ggTF.getText();
+		this.ggTF.setText(null);
+		float amountOfMoney = 0;
+		if(tmp.isBlank()) return;
+		try {
+			amountOfMoney = Float.parseFloat(tmp);
+		}
+		catch(Exception e) {
+			this.error_msg.setText("Invalid input!");
+			this.error_msg.setHorizontalAlignment(0);
+			this.error_msg.setFont(new Font("Arial", Font.BOLD, 13));
+			this.error_msg.setBackground(Color.red);
+			return;
+		}
+		this.stck.GovernmenGrant(amountOfMoney);
+	}
 	public void view() {
 		if(!show) this.setVisible(true);
 		this.show = true;
 	}
+	
 	
 }

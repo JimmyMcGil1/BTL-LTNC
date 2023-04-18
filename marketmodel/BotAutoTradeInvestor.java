@@ -1,11 +1,11 @@
 package marketmodel;
-import view.UserView;
+import view.*;
 public class BotAutoTradeInvestor implements IInvestor{
     //Attributes:
 	private String name;
 	private String[] msgLog;
 	private int numOfMsg;
-	private UserView uv;	
+	private BotTraderView uv;	
 	//Methods:
 	public BotAutoTradeInvestor(String name) {
 		this.name = name;
@@ -13,7 +13,7 @@ public class BotAutoTradeInvestor implements IInvestor{
 		this.numOfMsg = 0;
 		this.uv = null;
 	}
-	public void setUserView(UserView uv) {
+	public void setUserView(BotTraderView uv) {
 		this.uv = uv;
 	}
 	public String getName() {

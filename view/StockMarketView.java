@@ -53,7 +53,7 @@ public class StockMarketView extends JFrame {
 		}
 		private void tablePanelSet() {
 			this.tablePanel = new JPanel();
-			String[] header = {"Name", "Symbol", "Price"};
+			String[] header = {"Name", "Symbol", "Point"};
 			DefaultTableModel tb = new DefaultTableModel(header, 0); 
 			DefaultTableCellRenderer cr = new DefaultTableCellRenderer();
 			System.out.println(this.market.itemCount());
