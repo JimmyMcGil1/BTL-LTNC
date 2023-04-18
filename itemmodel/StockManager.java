@@ -32,6 +32,17 @@ public class StockManager implements ItemManager {
 		}
 	}
 
+	public void GovernmenGrant (float amoutOfMoney) {
+		for(int i = 0; i < list.size(); i++) {
+			//gia co phieu tang them 1 dola / 1000000 dola chinh phu tro cap
+			list.get(i).setPrice(list.get(i).getPrice() + amoutOfMoney / 1000000); 
+			//list.get(i).notifyMarket("" + percentage);
+		}
+	}
+	public void DelistingStock(Item stock) {
+		System.out.println(stock.name + " has been delisted");
+		list.remove((stock));
+	}
 	@Override
 	public void changeBy(String id, float percentage) throws Exception  {
 		// TODO Auto-generated method stub

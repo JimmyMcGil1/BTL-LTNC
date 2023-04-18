@@ -10,6 +10,12 @@ public class Main {
 		Stock a = new Stock(), b = new Stock(), c = new Stock();
 		StockMarket HOSE = new StockMarket("HOSE");
 		IndividualInvestor P1 = new IndividualInvestor(":D"), P2 = new IndividualInvestor(":P");
+		
+		//Khoi tao cac loai investor khac:
+		//IIinvestor fund1 = new InvesmentFund(name:"Berkshire Hathaway");
+		//IInvestor bot1 = new BotAutoTradeInvestor(name:"Bot1");
+
+
 		HOSE.subscribe(P1);
 		HOSE.subscribe(P2);
 		a.init("ABC", "abc", 100, HOSE);

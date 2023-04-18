@@ -35,6 +35,6 @@ public class InvesmentFund implements IInvestor {
 		//insert text & update
 		this.msgLog[0] = msg;
 		System.out.println(this.name + ": " + this.msgLog[0]);
-		this.uv.msgUpdate();
+		if(this.uv != null) this.uv.msgUpdate();
 	}
 }
