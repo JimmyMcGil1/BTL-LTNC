@@ -20,7 +20,7 @@ public class AdminView extends JFrame {
 	private JTextField inflateTF;
 	private JTextField nameTF;
 	private JTextField percentageTF;
-	
+	private static boolean show = false;
 	//Methods:
 	public AdminView(StockManager stck) {
 		this.stck = stck;
@@ -42,7 +42,7 @@ public class AdminView extends JFrame {
 		this.add(commandPanel, BorderLayout.CENTER);
 		//initialize error log
 		this.add(this.errorLogSet(), BorderLayout.SOUTH);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 	private void titlePanelSet() {
 		this.titlePanel = new JPanel();
@@ -158,7 +158,8 @@ public class AdminView extends JFrame {
 		}
 	}
 	public void view() {
-		this.setVisible(true);
+		if(!show) this.setVisible(true);
+		this.show = true;
 	}
 	
 }

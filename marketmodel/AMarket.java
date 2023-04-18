@@ -25,5 +25,12 @@ public abstract class AMarket {
 			investorList.get(i).update(msg);
 		}
 	}
+	public Item getItem(int pos) {
+		return this.itemList.get(pos);
+	}
+	public int itemCount() {
+		return this.itemList.size();
+	}
+	public abstract void updateView(String ID, boolean color);
 	public abstract int search(String ID);
 }
